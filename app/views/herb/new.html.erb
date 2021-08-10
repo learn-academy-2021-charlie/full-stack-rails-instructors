@@ -1,0 +1,16 @@
+<h2>Add an Herb</h2>
+
+<%= form_with model: @herb, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <br>
+  <%= form.label :watered %>
+  <%= form.text_field :watered%>
+  <br>
+  <br>
+  <%= form.submit 'Add Herb'%>
+<% end %>
+<br>
+<br>
+<h4><%= link_to 'Back Home', herbs_path %></h4>

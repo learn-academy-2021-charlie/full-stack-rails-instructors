@@ -99,7 +99,7 @@ end
 ```
 - create a route `post '/herbs' => 'herb#create'`
 - view: submit button and redirects
-```
+```ruby
 def create
   @herb = Herb.create(herb_params)
   if @herb.valid?
@@ -109,3 +109,20 @@ def create
   end
 end
 ```
+
+
+### DESTROY
+- Destory - removing an item from the db
+- controller method
+```ruby
+def destroy
+  @herb = Herb.find(params[:id])
+  if @herb.destroy
+    redirect_to herbs_path
+  else
+    redirect_to herb_path(@herb)
+  end
+end
+```
+- create a route `delete '/herbs/:id' => 'herb#destroy', as: 'delete_herb'`
+- view is a button on the show page `<h4><%= link_to 'Delete Herb', delete_herb_path(@herb), method: :delete %></h4>`

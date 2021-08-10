@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   get '/herbs/new' => 'herb#new', as: 'new_herb'
   get '/herbs/:id' => 'herb#show', as: 'herb'
   post '/herbs' => 'herb#create'
+  delete '/herbs/:id' => 'herb#destroy', as: 'delete_herb'
   root 'herb#index'
 end

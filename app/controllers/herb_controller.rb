@@ -30,6 +30,20 @@ class HerbController < ApplicationController
     end
   end
 
+  def edit
+    @herb = Herb.find(params[:id])
+  end
+
+  def update
+    @herb = Herb.find(params[:id])
+    @herb.update(herb_params)
+    if @herb.valid?
+      redirect_to herb_path(@herb)
+    else
+      redirect_to edit_herb_path(@herb)
+    end
+  end
+
   # Anything below private can only be called inside the scope of this class
   private
   # Strong params:

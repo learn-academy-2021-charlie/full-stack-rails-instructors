@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get '/herbs/:id' => 'herb#show', as: 'herb'
   post '/herbs' => 'herb#create'
   delete '/herbs/:id' => 'herb#destroy', as: 'delete_herb'
+  get '/herbs/:id/edit' => 'herb#edit', as: 'edit_herb'
+  patch 'herbs/:id' => 'herb#update'
   root 'herb#index'
 end

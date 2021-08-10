@@ -1,0 +1,16 @@
+<h2>Update an Herb</h2>
+
+<%= form_with model: @herb, method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <br>
+  <%= form.label :watered %>
+  <%= form.text_field :watered%>
+  <br>
+  <br>
+  <%= form.submit 'Edit Herb'%>
+<% end %>
+<br>
+<br>
+<h4><%= link_to 'Back Home', herbs_path %></h4>

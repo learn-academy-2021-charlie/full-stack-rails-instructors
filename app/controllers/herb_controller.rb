@@ -21,6 +21,15 @@ class HerbController < ApplicationController
     end
   end
 
+  def destroy
+    @herb = Herb.find(params[:id])
+    if @herb.destroy
+      redirect_to herbs_path
+    else
+      redirect_to herb_path(@herb)
+    end
+  end
+
   # Anything below private can only be called inside the scope of this class
   private
   # Strong params:

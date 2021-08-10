@@ -126,3 +126,54 @@ end
 ```
 - create a route `delete '/herbs/:id' => 'herb#destroy', as: 'delete_herb'`
 - view is a button on the show page `<h4><%= link_to 'Delete Herb', delete_herb_path(@herb), method: :delete %></h4>`
+
+### EDIT
+- Edit - gives us a form to make changes to an existing item
+- controller method
+```
+def edit
+  @herb = Herb.find(params[:id])
+end
+```
+- create a route `get '/herbs/:id/edit' => 'herb#edit', as: 'edit_herb'`
+- create a view: edit.html.erb
+```
+<h2>Update an Herb</h2>
+
+<%= form_with model: @herb, method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <br>
+  <%= form.label :watered %>
+  <%= form.text_field :watered%>
+  <br>
+  <br>
+  <%= form.submit 'Edit Herb'%>
+<% end %>
+<br>
+<br>
+<h4><%= link_to 'Back Home', herbs_path %></h4>
+```
+- navigation from show => edit
+```
+<h4>
+  <%= link_to 'Edit Herb', edit_herb_path(@herb) %>
+</h4>
+```
+
+### UPDATE
+- Update: modifies one instance in the db
+- controller method
+```ruby
+def update
+  @herb = Herb.find(params[:id])
+  @herb.update(herb_params)
+  if @herb.valid?
+    redirect_to herb_path(@herb)
+  else
+    redirect_to edit_herb_path(@herb)
+  end
+end
+```
+- create a route `patch 'herbs/:id' => 'herb#update'`

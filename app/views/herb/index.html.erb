@@ -2,6 +2,6 @@
 
 <ul>
   <% @herbs.each do |herb| %>
-    <li><%= herb.name %></li>
+    <li><%= link_to herb.name, herb_path(herb) %></li>
   <% end %>
 </ul>
